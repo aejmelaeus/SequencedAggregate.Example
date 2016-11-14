@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Endpoint.Messages", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Endpoint.Messages", "User.Endpoint.Messages\User.Endpoint.Messages.csproj", "{154F2977-40DE-4FF6-9FA6-07C82ED6FEA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payroll.Integration", "Payroll.Integration\Payroll.Integration.csproj", "{3FB842F1-11A0-4230-A981-6EE44C4FD285}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{154F2977-40DE-4FF6-9FA6-07C82ED6FEA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{154F2977-40DE-4FF6-9FA6-07C82ED6FEA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{154F2977-40DE-4FF6-9FA6-07C82ED6FEA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB842F1-11A0-4230-A981-6EE44C4FD285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB842F1-11A0-4230-A981-6EE44C4FD285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB842F1-11A0-4230-A981-6EE44C4FD285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB842F1-11A0-4230-A981-6EE44C4FD285}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

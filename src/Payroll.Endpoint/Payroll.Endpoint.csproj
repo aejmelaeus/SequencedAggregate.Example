@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NServiceBus.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NServiceBus.6.0.0\lib\net452\NServiceBus.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +49,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Handlers\ServiceAddedToCustomerHandler.cs" />
+    <Compile Include="Handlers\ServiceRemovedFromCustomer.cs" />
+    <Compile Include="Commands\UpdateCompaniesForUser.cs" />
+    <Compile Include="Handlers\UsersConnectedToServiceOnCustomerHandler.cs" />
+    <Compile Include="Handlers\UsersDisconnectedFromServiceOnCustomerHandler.cs" />
+    <Compile Include="Handlers\UserUpdatedHandler.cs" />
+    <Compile Include="ProgramService.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Endpoint.Messages\Core.Endpoint.Messages.csproj">
+      <Project>{73FB2990-A253-472B-9EC2-A3E5DFB57671}</Project>
+      <Name>Core.Endpoint.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Payroll.Domain\Payroll.Domain.csproj">
+      <Project>{6692B4CA-4469-4E5E-9F04-940B2592DE23}</Project>
+      <Name>Payroll.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\User.Endpoint.Messages\User.Endpoint.Messages.csproj">
+      <Project>{154f2977-40de-4ff6-9fa6-07c82ed6fea3}</Project>
+      <Name>User.Endpoint.Messages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
