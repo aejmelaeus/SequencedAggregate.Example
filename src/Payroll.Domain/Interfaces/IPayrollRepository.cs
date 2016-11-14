@@ -7,6 +7,7 @@ namespace Payroll.Domain.Interfaces
     {
         PayrollCustomer GetCustomerById(string id);
         void Commit(PayrollCustomer payrollCustomer);
+        void CommitEvent(string id, long sequenceAnchor, Guid messageId, IPayrollEvent events);
         void CommitEvents(string id, long sequenceAnchor, Guid messageId, IEnumerable<IPayrollEvent> events);
         PayrollUser GetUserById(Guid id);
     }

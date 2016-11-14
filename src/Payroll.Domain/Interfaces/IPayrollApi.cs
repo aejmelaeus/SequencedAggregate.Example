@@ -1,7 +1,9 @@
-﻿namespace Payroll.Domain.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace Payroll.Domain.Interfaces
 {
     public interface IPayrollApi
     {
-        void Synchronize(PayrollCustomer payrollCustomer);
+        Task SynchronizeAsync(PayrollCustomer payrollCustomer);
     }
 }

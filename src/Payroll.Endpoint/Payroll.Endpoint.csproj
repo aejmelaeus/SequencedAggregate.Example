@@ -51,7 +51,8 @@
   <ItemGroup>
     <Compile Include="Handlers\ServiceAddedToCustomerHandler.cs" />
     <Compile Include="Handlers\ServiceRemovedFromCustomer.cs" />
-    <Compile Include="Commands\UpdateCompaniesForUser.cs" />
+    <Compile Include="Commands\SynchronizePayrollCustomer.cs" />
+    <Compile Include="Handlers\SynchronizePayrollCustomerHandler.cs" />
     <Compile Include="Handlers\UsersConnectedToServiceOnCustomerHandler.cs" />
     <Compile Include="Handlers\UsersDisconnectedFromServiceOnCustomerHandler.cs" />
     <Compile Include="Handlers\UserUpdatedHandler.cs" />
@@ -78,6 +79,7 @@
       <Name>User.Endpoint.Messages</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,9 +1,8 @@
 ﻿using System;
 using NServiceBus;
 using System.Threading.Tasks;
-using Payroll.Domain.Interfaces;
-using Payroll.Endpoint.Commands;
 using User.Endpoint.Messages;
+using Payroll.Domain.Interfaces;
 
 namespace Payroll.Endpoint.Handlers
 {
@@ -21,14 +20,22 @@ namespace Payroll.Endpoint.Handlers
             var id = message.Id;
             var sequenceAnchor = message.TimeStamp.Ticks;
             var messageId = Guid.Parse(context.MessageId);
-            var userUpdated = new Domain.Events.UserUpdated(message.FirstName, message.LastName, message.Email);
+            var userUpdatedEvent = new Domain.Events.UserUpdated(message.FirstName, message.LastName, message.Email);
             
-            _payrollRepository.CommitEvents(id.ToString(), sequenceAnchor, messageId, new []{ userUpdated });
+            _payrollRepository.CommitEvent(id.ToString(), sequenceAnchor, messageId, userUpdatedEvent );
 
-            return context.Send(new UpdateCompaniesForUser
+            var user = _payrollRepository.GetUserById(id);
+
+            foreach (var customerId in user.CustomerIds)
             {
-                Id = id
-            });
+                _payrollRepository.CommitEvent(customerId, sequenceAnchor, Guid.NewGuid(), userUpdatedEvent);
+                context.Send(new SynchronizePayrollCustomer
+                {
+                    Id = customerId
+                });
+            }
+        
+            return Task.FromResult(0);
         }
     }
 }

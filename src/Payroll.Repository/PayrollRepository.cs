@@ -34,6 +34,11 @@ namespace Payroll.Repository
             payrollCustomer.ClearUncommittedEvents();
         }
 
+        public void CommitEvent(string id, long sequenceAnchor, Guid messageId, IPayrollEvent @event)
+        {
+            CommitEvents(id, sequenceAnchor, messageId, new [] { @event });   
+        }
+
         public void CommitEvents(string id, long sequenceAnchor, Guid messageId, IEnumerable<IPayrollEvent> events)
         {
             _sequencedEventStore.CommitEvents(id, sequenceAnchor, messageId, events);
